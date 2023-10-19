@@ -9,6 +9,5 @@
 
   map.on('click', onMapClick);
 
-  App.onMapClick = onMapClick;
   window.App = App;
 })(window);
