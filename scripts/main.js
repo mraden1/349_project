@@ -1,8 +1,8 @@
 (function (window) {
   'use strict';
   var App = window.App || {};
-  var OnMapClick = onMapClick;
+  var onClick = map;
 
-  addEventListener('click', OnMapClick);
+  addEventListener('click', onClick);
   window.App = App;
 })(window);

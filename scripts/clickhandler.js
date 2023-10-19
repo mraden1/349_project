@@ -8,6 +8,6 @@
   }
 
   map.on('click', onMapClick);
-
+  
   window.App = App;
 })(window);
