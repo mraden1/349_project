@@ -1,3 +1,10 @@
-#map {
-  height: 500px;
+.div {
+  display: contents;
+  size-adjust: 5px;
 }
+
+#map {
+  display: flex;
+  height: 800px;
+}
+
