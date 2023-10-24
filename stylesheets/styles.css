@@ -1,10 +1,23 @@
 .div {
-  display: contents;
+  display: block;
+  justify-self: center;
+  align-content: column;
   size-adjust: 5px;
 }
 
-#map {
+h1 {
+  text-align: center;
+}
+
+.container {
   display: flex;
+  justify-content: center, space-evenly;
+  justify-items: center;
+}
+
+
+#map {
+  display: block;
   height: 800px;
 }
 
