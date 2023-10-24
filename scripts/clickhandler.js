@@ -1,18 +1,20 @@
 (function (window) {
   'use strict';
   var App = window.App || {};
-  var popup = L.popup();
-  var marker = L.marker();
-  
 
-  function onMapClick(e) {
-    popup
-      .setLatLng(e.latlng)
-      .setContent("You clicked the map at " + e.latlng)
-      .openOn(map);
-    marker = L.marker(e.latlng).addTo(map);
+  function displayPopup() {
+    var userInput = prompt('where the party at?');
+    if (userInput) { 
+      marker.bindPopup(userInput).openPopup();
+    }
   }
 
+  function onMapClick(e) {
+    window.marker = L
+      .marker(e.latlng)
+      .addTo(map);
+    displayPopup();
+  }
   map.on('click', onMapClick);
   window.App = App;
 })(window);

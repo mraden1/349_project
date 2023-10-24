@@ -4,5 +4,6 @@
   var onClick = map;
 
   addEventListener('click', onClick);
+  
   window.App = App;
 })(window);
