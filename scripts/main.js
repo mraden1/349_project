@@ -7,7 +7,7 @@
   });
 
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
+    maxZoom: 22,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map);
 
@@ -24,7 +24,7 @@
   }
 
   function editMarker() {
-    var userInput = prompt('enter the info again');
+    var userInput = prompt('enter the info again, leave black to delete marker');
     if (userInput) {
       this.getPopup().setContent(userInput);
     } else { 
