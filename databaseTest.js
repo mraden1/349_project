@@ -1,4 +1,4 @@
-const { addUser, addPin } = require('./main');
+const { addUser, addPin, checkLogin } = require('./main');
 
 // Test code to add a user
 const testUserData = {
@@ -21,3 +21,14 @@ const testPinData = {
 };
 
 addPin(testPinData).catch(console.error);
+
+// Test code to check login information
+async function testLogin() {
+    var result = await checkLogin('test@example.com', 'test_password');
+    console.log(`Login successful: ${result}`);
+
+    result = await checkLogin('test2@email.com', 'testPassword');
+    console.log(`Login successful: ${result}`);
+  }
+  
+  testLogin();

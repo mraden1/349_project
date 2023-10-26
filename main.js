@@ -22,4 +22,20 @@ async function addPin(pinData) {
 }
 
 // Exporting functions so they can be used in other files
-module.exports = { addUser, addPin };
+
+
+async function checkLogin(email, password) {
+  const snapshot = await db.collection('Users')
+    .where('email', '==', email)
+    .where('password', '==', password)
+    .get();
+
+  if (snapshot.empty) {
+    console.log('No matching documents.');
+    return false;
+  }
+  console.log('Found User');
+  return true;
+}
+
+module.exports = { addUser, addPin, checkLogin };
