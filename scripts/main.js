@@ -11,29 +11,41 @@
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map);
 
-  function newMarker(e) {
-    var userInput = prompt('enter the info');
+  // Tuffy Titan Marker
+  var customIcon = L.icon({
+    iconUrl: 'img/tuffy-transparent.png',
+    iconSize: [70, 70],
+    iconAnchor: [50, 50], 
+  });
+
+  // Create a feature group to manage markers
+  var markerGroup = L.featureGroup();
+
+  function createNewMarker(e) {
+    var userInput = prompt('Enter Location and Event Information:', 'E.g., Name of Location, Events Occurring, and/or Time of Event');
+
     if (userInput) {
-      var marker =  L.marker(e.latlng)
-                    .bindPopup(userInput)
-                    .addTo(map)
-                    .openPopup()
-                    .on('dblclick', editMarker);
-      return (marker);
+      var marker = L.marker(e.latlng, { icon: customIcon })
+        .bindPopup(userInput)
+        .addTo(markerGroup) // Add to the markerGroup
+        .openPopup()
+        .on('dblclick', editMarker);
+      return marker;
     }
   }
 
   function editMarker() {
-    var userInput = prompt('enter the info again, leave black to delete marker');
+    var userInput = prompt('Edit Location and Event Information (Leave blank to delete):');
     if (userInput) {
       this.getPopup().setContent(userInput);
-    } else { 
-      this.remove(); 
+    } else {
+      this.remove();
     }
   }
 
-  var group = L.featureGroup();
-  group.extend(map.on('click', newMarker));
+  markerGroup.addTo(map); // Add the marker group to the map
+
+  map.on('click', createNewMarker); // Attach the createNewMarker function directly to the map click event
 
   window.App = App;
 })(window);
