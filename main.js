@@ -1,5 +1,10 @@
 const admin = require("firebase-admin");
+const cors = require('cors');
 const serviceAccount = require("./titanmap-bc8cf-firebase-adminsdk-lfmn3-741d8df0f9.json");
+const express = require('express');
+const app = express();
+app.use(express.json());
+app.use(cors());
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -39,3 +44,20 @@ async function checkLogin(email, password) {
 }
 
 module.exports = { addUser, addPin, checkLogin };
+
+
+
+app.post('/addUser', async (req, res) => {
+  try {
+    const userData = req.body;
+    await addUser(userData);  //function to add a user to Firestore
+    res.status(200).send('User added.');
+  } catch (error) {
+    res.status(400).send('Could not add user.');
+  }
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
