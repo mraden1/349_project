@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="LoginPage.css">
+    <script>
+        function togglePasswordVisibility() {
+            var passwordField = document.getElementById('password');
+            var confirmPasswordField = document.getElementById('confirm_password');
+            
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                confirmPasswordField.type = "text";
+            } else {
+                passwordField.type = "password";
+                confirmPasswordField.type = "password";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Login</h2>
+    <form action="process_signup.php" method="POST">
+      <div class="left-column">
+          <img src="Login.png" alt="Your Image">
+      </div>
+      <div class="right-column">
+          
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+          
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+          
+          <input type="checkbox" id="show_password" onchange="togglePasswordVisibility()">
+          <label for="show_password">Show Password</label>
+
+          <input type="submit" value="Sign Up">
+
+          <label>Don't have an Account?<a href="SignUpPage.html">Sign Up</a></label>
+      </div>
+  </form>
+</body>
+</html>
