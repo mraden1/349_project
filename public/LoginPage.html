@@ -56,22 +56,27 @@
             email: formData.get("email"),
             password: formData.get("password"),
           };
+          try {
+            const res = await fetch("http://localhost:3000/checkLogin", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              //credentials: "include", // Important for cookies
+              body: JSON.stringify(userData),
+            });
 
-          const res = await fetch("http://localhost:3000/checkLogin", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            //credentials: "include", // Important for cookies
-            body: JSON.stringify(userData),
-          });
-          console.log("Status:", res.status, "Status text:", res.statusText);
+          //console.log("Status:", res.status, "Status text:", res.statusText);
           if (res.ok) {
-            const data = await res.json(); 
-            localStorage.setItem('token', data.token);
+            const data = await res.json();
+            localStorage.setItem("token", data.token);
             window.location.href = "index.html";
           } else {
-            // Handle errors
+            alert(res.statusText);
+          }
+        } catch (error) {
+            console.log("Something went wrong:", error);
+            alert("Failed to connect to server.");
           }
         });
       });

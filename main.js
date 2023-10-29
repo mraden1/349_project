@@ -167,6 +167,16 @@ app.post('/updatePin', verifyToken, async (req, res) => {
   res.status(200).send("Pin updated");
 });
 
+app.get('/getPins', async (req, res) => {
+  const snapshot = await db.collection('Pins').get();
+  const pins = [];
+  snapshot.forEach(doc => {
+    const data = doc.data();
+    pins.push({ lat: data.lat, lng: data.lng, info: data.info, userID: data.userID });
+  });
+  res.status(200).send(pins);
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

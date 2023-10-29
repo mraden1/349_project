@@ -68,19 +68,23 @@
             password: formData.get("password"),
             // add other fields here
           };
-
-          const res = await fetch("http://localhost:3000/addUser", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(userData),
-          });
-
+          try {
+            const res = await fetch("http://localhost:3000/addUser", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(userData),
+            });
+          
           if (res.ok) {
             window.location.href = "LoginPage.html";
           } else {
-            // Handle errors
+            alert(res.statusText);
+          }
+        } catch (error) {
+            console.log("Something went wrong:", error);
+            alert("Failed to connect to server.");
           }
         });
       });
