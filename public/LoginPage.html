@@ -1,44 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="LoginPage.css">
+    <link rel="stylesheet" type="text/css" href="LoginPage.css" />
     <script>
-        function togglePasswordVisibility() {
-            var passwordField = document.getElementById('password');
-            var confirmPasswordField = document.getElementById('confirm_password');
-            
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                confirmPasswordField.type = "text";
-            } else {
-                passwordField.type = "password";
-                confirmPasswordField.type = "password";
-            }
+      function togglePasswordVisibility() {
+        var passwordField = document.getElementById("password");
+        var confirmPasswordField = document.getElementById("confirm_password");
+
+        if (passwordField.type === "password") {
+          passwordField.type = "text";
+          confirmPasswordField.type = "text";
+        } else {
+          passwordField.type = "password";
+          confirmPasswordField.type = "password";
         }
+      }
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <h2>Login</h2>
-    <form action="process_signup.php" method="POST">
+    <form id="login-form">
       <div class="left-column">
-          <img src="Login.png" alt="Your Image">
+        <img src="Login.png" alt="Your Image" />
       </div>
       <div class="right-column">
-          
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
-          
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" required>
-          
-          <input type="checkbox" id="show_password" onchange="togglePasswordVisibility()">
-          <label for="show_password">Show Password</label>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
 
-          <input type="submit" value="Sign Up">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
 
-          <label>Don't have an Account?<a href="SignUpPage.html">Sign Up</a></label>
+        <input
+          type="checkbox"
+          id="show_password"
+          onchange="togglePasswordVisibility()"
+        />
+        <label for="show_password">Show Password</label>
+
+        <input type="submit" value="Login" />
+
+        <label
+          >Don't have an Account?<a href="SignUpPage.html">Sign Up</a></label
+        >
       </div>
-  </form>
-</body>
+    </form>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("login-form");
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const formData = new FormData(form);
+          const userData = {
+            email: formData.get("email"),
+            password: formData.get("password"),
+          };
+
+          const res = await fetch("http://localhost:3000/checkLogin", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            //credentials: "include", // Important for cookies
+            body: JSON.stringify(userData),
+          });
+          console.log("Status:", res.status, "Status text:", res.statusText);
+          if (res.ok) {
+            const data = await res.json(); 
+            localStorage.setItem('token', data.token);
+            window.location.href = "index.html";
+          } else {
+            // Handle errors
+          }
+        });
+      });
+    </script>
+  </body>
 </html>

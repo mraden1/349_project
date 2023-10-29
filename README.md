@@ -5,7 +5,7 @@ Database Connection Instructions:
 
 Navigate to project directory in terminal, run 'npm install' to install the node_modules. Then, download the "titanmap-bc8cf-firebase-adminsdk-lfmn3-741d8df0f9.json" from discord and place it in the same directory. 
 
-In order to enable cookies, 'npm install cookie-parser'
+In order to enable cookies, 'npm install cookie-parser', however, cookies are evil for some reason and I lost sleep over them so we are gonna use 'npm install jsonwebtoke' instead
 To run servers:
 
 npm install -g http-server
