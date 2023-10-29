@@ -2,7 +2,6 @@ body {
   --border-color: #d5d6d7;
   --primary-color: rgb(250, 165, 6);
   --secondary-color: #082661;
-  background-color: #082661;
 }
 
 .map__form {
@@ -10,17 +9,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.panel {
-  display: block;
-  height: 600px;
-  width: 90%;
-  justify-content: center;
-  border: var(--border-color);
-  border-style: ridge;
-  border-width: 2rem;
-  margin: 2rem;
 }
 
 a {
@@ -33,6 +21,7 @@ a {
 h1 {
   text-align: center;
   font-family: monospace;
+  font-style: bold;
   text-size-adjust: 3rem;
   color: var(--primary-color);
 }

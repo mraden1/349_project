@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Account</title>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
+    <link rel="stylesheet" href="stylesheets/account.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome, username!</h1>
+    </header>
+      <nav>
+        <ul>
+          <li>
+            <a href="#">My Pins</a>
+          </li>
+          <li>
+            <a href="#">Account Settings</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="container">
+        <title>Upcoming Events!</title>
+          <div class="map-container">
+            <div class="map-title">
+              <img src="img/tuffy-transparent.png">
+              <header>
+              <h1>Campus Map</h1>
+              </header>
+              <img src="img/tuffy-transparent.png">
+            </div>
+            <button class="cook-btn" id="delete-cookie">Delete Cookies</button>
+            <div class="panel" id="map"></div>
+          </div>
+        <div class="calendar-container">
+          <div id="calendar"></div>
+        </div>
+      </div>
+        <script src="scripts/calendar.js" charset="utf-8">
+        </script>
+        <script src="scripts/map.js" charset="utf-8"></script>
+      </div>
+  </body>
+</html>
