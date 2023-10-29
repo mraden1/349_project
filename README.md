@@ -7,13 +7,17 @@ Navigate to project directory in terminal, run 'npm install' to install the node
 
 To run servers:
 
-npm install -g http-server 
+npm install -g http-server
+
 npm install cors
 
 run back end, open 2nd terminal:
+
 node main.js
 
 run front end, open 3rd terminal:
+
 http-server --cors
+
 
 to use site locally, in browser go to http://localhost:8080/
