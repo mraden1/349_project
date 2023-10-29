@@ -11,11 +11,11 @@ npm install -g http-server
 
 npm install cors
 
-run back end, open 2nd terminal:
+To run back end, open 2nd terminal and run:
 
 node main.js
 
-run front end, open 3rd terminal:
+To run front end, open 3rd terminal and run:
 
 http-server --cors
 
