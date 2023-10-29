@@ -1,10 +1,13 @@
 const admin = require("firebase-admin");
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const serviceAccount = require("./titanmap-bc8cf-firebase-adminsdk-lfmn3-741d8df0f9.json");
 const express = require('express');
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
+app.use(express.static('public'));
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -39,18 +42,17 @@ async function addPin(pinData) {
 // Exporting functions so they can be used in other files
 
 
-async function checkLogin(email, password) {
-  const snapshot = await db.collection('Users')
-    .where('email', '==', email)
-    .where('password', '==', password)
-    .get();
+async function checkLogin(req, res) {
+  const { email, password } = req.body;
+  // assume you validate and it's all good
+  const isValidUser = await someValidationFunction(email, password);
 
-  if (snapshot.empty) {
-    console.log('No matching documents.');
-    return false;
+  if (isValidUser) {
+    res.cookie('userEmail', email);
+    res.status(200).send('Logged in.');
+  } else {
+    res.status(401).send('Invalid credentials.');
   }
-  console.log('Found User');
-  return true;
 }
 
 module.exports = { addUser, addPin, checkLogin };
