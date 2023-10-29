@@ -62,10 +62,19 @@
         form.addEventListener("submit", async (e) => {
           e.preventDefault();
           const formData = new FormData(form);
+
+          const password = formData.get("password");
+          const confirmPassword = formData.get("confirm_password");
+
+          if (password !== confirmPassword) {
+            alert("Passwords do not match");
+            return;
+          }
+
           const userData = {
             fullName: formData.get("Full Name"),
             email: formData.get("email"),
-            password: formData.get("password"),
+            password: password
             // add other fields here
           };
           try {
@@ -76,13 +85,13 @@
               },
               body: JSON.stringify(userData),
             });
-          
-          if (res.ok) {
-            window.location.href = "LoginPage.html";
-          } else {
-            alert(res.statusText);
-          }
-        } catch (error) {
+
+            if (res.ok) {
+              window.location.href = "LoginPage.html";
+            } else {
+              alert(await res.text());
+            }
+          } catch (error) {
             console.log("Something went wrong:", error);
             alert("Failed to connect to server.");
           }
