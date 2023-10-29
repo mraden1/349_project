@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 <head>
-
-  <!--
-<link rel="icon" type="image/png" href="mapFavicon.png">
--->
-  
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
     crossorigin=""/>
@@ -12,13 +7,23 @@
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
     crossorigin="">
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="stylesheets/styles.css" />
 </head>
-<body class="form">
-   <h1 class="title">Campus Map</h1>
-  <div class="container" id="map">
-    <script src="scripts/main.js"></script>
+<body>
+  <div class="map__form">
+    <div class="title">
+      <header>
+      <h1>Campus Map</h1>
+      </header>
+    </div>
+    <a href="Accountpage.url">
+      <button>Go To Account</button>
+    </a>
+    <div class="panel panel-default" id="map"></div>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
+  <script src="scripts/map.js" charset="utf-8"></script>
 </body>
 
 

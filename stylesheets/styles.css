@@ -1,8 +1,28 @@
-.div {
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.map__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+a {
+  display: flex;
+  align-self: center;
+  padding: 10px;
+}
+
+.leaflet-pane {
   display: block;
-  justify-self: center;
-  align-content: column;
-  size-adjust: 5px;
+  margin: 5rem;
+}
+
+
+button {
+  display: auto;
 }
 
 h1 {
@@ -11,16 +31,10 @@ h1 {
   color: rgb(17, 16, 16);
 }
 
-.container {
-  display: flex;
-  justify-content: center, space-evenly;
-  justify-items: center;
-}
-
-
-#map {
+.panel {
   display: block;
   height: 800px;
+  width: 100%;
 }
 
 /* styling the prompt text */

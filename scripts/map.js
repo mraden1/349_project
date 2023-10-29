@@ -1,9 +1,12 @@
 (function (window) {
   'use strict';
+
   var App = window.App || {};
+
   var map = L.map('map', {
     center: [33.8823, -117.8851],
     zoom: 16
+
   });
 
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -43,9 +46,9 @@
     }
   }
 
-  markerGroup.addTo(map); // Add the marker group to the map
+  markerGroup.addTo(map); 
+  map.on('click', createNewMarker);
 
-  map.on('click', createNewMarker); // Attach the createNewMarker function directly to the map click event
 
   window.App = App;
 })(window);
