@@ -13,8 +13,18 @@ admin.initializeApp({
 const db = admin.firestore();
 // Function to add a user
 async function addUser(userData) {
+   // check if email exists
+   const snapshot = await db.collection("Users")
+   .where('email', '==', userData.email)
+   .get();
+   
+ if(!snapshot.empty) {
+   // Email already exists
+   return 'Email already exists';
+ }
   const userRef = db.collection("Users").doc(); // Generates a unique ID
   await userRef.set(userData);
+  return 'User added';
 }
 
 // Function to add a pin
@@ -50,8 +60,12 @@ module.exports = { addUser, addPin, checkLogin };
 app.post('/addUser', async (req, res) => {
   try {
     const userData = req.body;
-    await addUser(userData);  //function to add a user to Firestore
-    res.status(200).send('User added.');
+    const result = await addUser(userData);  //function to add a user to Firestore
+    if (result === 'Email already exists') {
+      res.status(400).send(result);
+    } else {
+      res.status(200).send(result);
+    }
   } catch (error) {
     res.status(400).send('Could not add user.');
   }
