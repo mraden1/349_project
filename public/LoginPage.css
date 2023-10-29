@@ -54,7 +54,6 @@ body {
   input[type="text"],
   input[type="email"],
   input[type="password"],
-  input[type="checkbox"],
   input[type="submit"] {
       width: 100%;
       padding: 10px;
@@ -81,6 +80,17 @@ body {
 
   input[type="submit"]:hover {
       background-color: #555;
+  }
+
+  .show-pass {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+  }
+
+  input[type="checkbox"] {
+    display: flex;
+    margin-bottom: 0px;
   }
 
   img {
