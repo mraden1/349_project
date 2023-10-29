@@ -51,6 +51,11 @@ body {
       margin-top: 5px;
   }
 
+  .password_checkbox {
+    display: flex;
+    margin-bottom: .1rem;
+  }
+
   input[type="text"],
   input[type="email"],
   input[type="password"],
@@ -67,11 +72,11 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-bottom: 5px;
   }
 
-  .checkbox {
+  input#show_password {
     display: block;
+    margin-top: 5px;
     margin-right: 5px;
   }
 
