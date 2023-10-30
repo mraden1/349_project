@@ -85,17 +85,6 @@
     }
   }
 
-  function editMarker() {
-    var userInput = prompt(
-      "Edit Location and Event Information (Leave blank to delete):"
-    );
-    if (userInput) {
-      this.getPopup().setContent(userInput);
-    } else {
-      this.remove();
-    }
-  }
-
   async function loadPins() {
     try {
       const res = await fetch("http://localhost:3000/getPins", {
@@ -107,8 +96,9 @@
       if (res.ok) {
         const pins = await res.json();
         pins.forEach(pin => {
-          var marker = L.marker([pin.lat, pin.lng], { icon: customIcon })
+          L.marker([pin.lat, pin.lng], { icon: customIcon })
             .bindPopup(pin.info)
+            .on("dblclick", editMarker)
             .addTo(markerGroup);
             console.log("added marker")
         });
@@ -120,7 +110,19 @@
       alert("Failed to connect to server.");
     }
   }
-  
+
+  async function editMarker() {
+    
+    var userInput = prompt(
+      "Edit Location and Event Information (Leave blank to delete):"
+    );
+    if (userInput) {
+      this.getPopup().setContent(userInput);
+    } else {
+      this.remove();
+    }
+  }
+    
 
   markerGroup.addTo(map);
   map.on("click", createNewMarker);
