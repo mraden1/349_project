@@ -48,7 +48,7 @@
       );
 
       if (userInput) {
-        var marker = L.marker(e.latlng, { icon: customIcon })
+        L.marker(e.latlng, { icon: customIcon })
           .bindPopup(userInput)
           .addTo(markerGroup) // Add to the markerGroup
           .openPopup()
@@ -76,12 +76,22 @@
           // something went wrong
           console.log("Failed to add pin");
         }
-        return marker;
       }
     } catch (error) {
       console.log("Something went wrong:", error);
       alert("Failed to connect to server.");
       return null;
+    }
+  }
+
+  async function editMarker() {
+    var userInput = prompt(
+      "Edit Location and Event Information (Leave blank to delete):"
+    );
+    if (userInput) {
+      this.getPopup().setContent(userInput);
+    } else {
+      this.remove();
     }
   }
 
@@ -98,7 +108,6 @@
         pins.forEach(pin => {
           L.marker([pin.lat, pin.lng], { icon: customIcon })
             .bindPopup(pin.info)
-            .on("dblclick", editMarker)
             .addTo(markerGroup);
             console.log("added marker")
         });
@@ -110,19 +119,7 @@
       alert("Failed to connect to server.");
     }
   }
-
-  async function editMarker() {
-    
-    var userInput = prompt(
-      "Edit Location and Event Information (Leave blank to delete):"
-    );
-    if (userInput) {
-      this.getPopup().setContent(userInput);
-    } else {
-      this.remove();
-    }
-  }
-    
+  
 
   markerGroup.addTo(map);
   map.on("click", createNewMarker);
