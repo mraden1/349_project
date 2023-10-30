@@ -10,6 +10,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .panel {
@@ -31,16 +32,15 @@ a {
 
 
 h1 {
-  text-align: center;
-  font-family: monospace;
-  text-size-adjust: 3rem;
-  color: var(--primary-color);
+  font-family: Roboto,sans-serif;
+  font-size: 3rem;
+  color: #F47920;
 }
 
 .title {
   display: flex;
-  flex-direction: row;
-  justify-content: center, space-around;
+  justify-content: center;
+  align-items: center;
 }
 
 img {
@@ -49,10 +49,92 @@ img {
   width: 60px;
 }
 
-/* styling the prompt text */
 .prompt-text {
-  font-family: 'Your Custom Font', sans-serif;
+  font-family: sans-serif;
   font-size: 16px; 
   color: #333; 
 }
+
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  color: #fff;
+}
+
+.btn1 {
+  background-color: #0056b3; 
+  color: #fff;
+}
+
+.btn1:hover {
+  background-color: #003e80; 
+  color: #fff;
+}
+
+.btn1:active {
+  background-color: #0056b3; 
+  color: #fff;
+}
+
+.btn2 {
+  background-color: #0056b3; 
+  color: #fff;
+}
+
+.btn2:hover {
+  background-color: #003e80; 
+  color: #fff;
+}
+
+.btn2:active {
+  background-color: #0056b3; 
+  color: #fff;
+}
+
+/* Existing CSS styles */
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.team-members {
+  font-size: 14px;
+}
+
+.team-members ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.team-members li {
+  margin-bottom: 5px;
+}
+
+
 

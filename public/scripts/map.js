@@ -44,11 +44,11 @@
       }
       var userInput = prompt(
         "Enter Location and Event Information:",
-        "E.g., Name of Location, Events Occurring, and/or Time of Event"
+        "E.g. Name of Location, Events Occurring, and/or Time of Event"
       );
 
       if (userInput) {
-        var marker = L.marker(e.latlng, { icon: customIcon })
+        L.marker(e.latlng, { icon: customIcon })
           .bindPopup(userInput)
           .addTo(markerGroup) // Add to the markerGroup
           .openPopup()
@@ -76,7 +76,6 @@
           // something went wrong
           console.log("Failed to add pin");
         }
-        return marker;
       }
     } catch (error) {
       console.log("Something went wrong:", error);
@@ -85,7 +84,7 @@
     }
   }
 
-  function editMarker() {
+  async function editMarker() {
     var userInput = prompt(
       "Edit Location and Event Information (Leave blank to delete):"
     );
@@ -107,9 +106,10 @@
       if (res.ok) {
         const pins = await res.json();
         pins.forEach(pin => {
-          var marker = L.marker([pin.lat, pin.lng], { icon: customIcon })
+          L.marker([pin.lat, pin.lng], { icon: customIcon })
             .bindPopup(pin.info)
-            .addTo(markerGroup);
+            .addTo(markerGroup)
+            .on('dblclick', editMarker);
             console.log("added marker")
         });
       } else {
