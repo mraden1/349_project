@@ -108,7 +108,8 @@
         pins.forEach(pin => {
           L.marker([pin.lat, pin.lng], { icon: customIcon })
             .bindPopup(pin.info)
-            .addTo(markerGroup);
+            .addTo(markerGroup)
+            .on('dblclick', editMarker);
             console.log("added marker")
         });
       } else {
