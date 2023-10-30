@@ -44,7 +44,7 @@
       }
       var userInput = prompt(
         "Enter Location and Event Information:",
-        "E.g., Name of Location, Events Occurring, and/or Time of Event"
+        "E.g. Name of Location, Events Occurring, and/or Time of Event"
       );
 
       if (userInput) {
